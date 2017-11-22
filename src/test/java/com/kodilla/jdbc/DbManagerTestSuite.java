@@ -47,7 +47,8 @@ public class DbManagerTestSuite {
         DbManager dbManager = DbManager.getInstance();
         //When
         Statement statement = dbManager.getConnection().createStatement();
-        ResultSet rs = statement.executeQuery("SELECT users.FIRSTNAME, users.LASTNAME FROM users, posts WHERE users.ID = posts.user_id GROUP BY users.id HAVING COUNT(*) > 1");
+        ResultSet rs = statement.executeQuery("SELECT users.FIRSTNAME, users.LASTNAME FROM users, posts " +
+                "WHERE users.ID = posts.user_id GROUP BY users.id HAVING COUNT(*) > 1");
         int counter = 0;
         while(rs.next()){
             System.out.println(rs.getString("FIRSTNAME") + " " + rs.getString("LASTNAME"));
